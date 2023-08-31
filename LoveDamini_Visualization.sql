@@ -83,3 +83,17 @@ end as Insight_overview
 from twitter) as twitter_df
 group by 1
 ;
+
+--
+with cte as (
+	select sentiment,
+	case
+		when sentiment = 2 then 'Pos'
+		when sentiment = 1 then 'Neu'
+		else 'Neg'
+end as Insight_overview
+from twitter
+)
+select insight_overview, count(insight_overview)
+from cte
+group by all;

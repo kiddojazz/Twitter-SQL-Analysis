@@ -41,14 +41,14 @@ SELECT user_name, sum(followers) as follower_count
 from twitter
 group by 1
 order by 2 desc
-limit 20;
+limit 30;
 
 -- Number of device used
 SELECT tweet_source, count(tweet_source) as Device_source
 from twitter
 group by 1
 order by 2 desc
-limit 3; -- This gets you the Top 3 device.
+--limit 3; -- This gets you the Top 3 device.
 
 -- Tweet Count by Day
 /* Firstly, you need to convert the TimeStamp to Date only*/
@@ -72,6 +72,7 @@ from twitter;
 
 
 ---------
+-- Using Subquery in SQL
 
 select insight_overview, count(insight_overview)
 from (select sentiment,
@@ -84,7 +85,7 @@ from twitter) as twitter_df
 group by 1
 ;
 
---
+-- Using CTE (Common Table Expression)
 with cte as (
 	select sentiment,
 	case
